@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ask import router as ask_router, load_messages
+from backend.ask import router as ask_router, load_messages
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -38,5 +38,6 @@ if os.path.exists(FRONTEND_DIST):
 @app.on_event("startup")
 async def startup_event():
     await load_messages()
+
 
 
