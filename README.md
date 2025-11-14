@@ -22,4 +22,12 @@ This setup makes responses more accurate, reduces hallucination, and keeps every
 
 
 
-Anomalies or Inconsistencies in the member data.
+Anomalies or Inconsistencies in the member data for feeding the LLM:
+1.No conversation grouping — all messages are treated independently.
+2.User IDs and names are not normalized or cross-verified.
+3.Messages contain repeated boilerplate (“please”, “can you…”) that weakens embeddings.
+4.Wide domain variability (travel, payments, reservations) for a small LLM.
+5.No semantic deduplication for paraphrased messages.
+6.User names have accented characters that may affect matching.
+7.Dataset not ordered chronologically
+8.Large variation in message length.
