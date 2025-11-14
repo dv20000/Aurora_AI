@@ -23,7 +23,7 @@ This setup makes responses more accurate, reduces hallucination, and keeps every
 
 
 Anomalies or Inconsistencies in the member data for feeding the LLM:
-1. No conversation grouping — all messages are treated independently.
+1. No conversation grouping, all messages are treated independently.
 2. User IDs and names are not normalized or cross-verified.
 3. Messages contain repeated boilerplate (“please”, “can you…”) that weakens embeddings.
 4. Wide domain variability (travel, payments, reservations) for a small LLM.
@@ -31,3 +31,18 @@ Anomalies or Inconsistencies in the member data for feeding the LLM:
 6. User names have accented characters that may affect matching.
 7. Dataset not ordered chronologically
 8. Large variation in message length.
+
+**The screen recording contains:
+1. Asking Two Valid Queries (Answers Exist in Context)
+I begin by asking two different questions whose answers are clearly present in the Aurora messages dataset.
+The system retrieves the correct messages through the FAISS semantic index and generates grounded, accurate responses using the FLAN-T5 model.
+
+2. Asking Random / Out-of-Context Queries (Hallucination Check)
+Next, I test the model with questions that do NOT exist in the dataset.
+The system correctly avoids hallucination and responds with the fallback message:
+“I cannot determine the answer from this dataset.”
+This step verifies that the model answers only from retrieved context and does not invent information.
+
+3. Asking a Harmful or Unsafe Query (Guardrail Test)
+Finally, I test the toxicity guardrail by entering a harmful or unsafe question.
+The system blocks the request and returns a safe message, proving that the toxicity filter is active and working correctly.
