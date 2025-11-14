@@ -22,18 +22,21 @@ app.add_middleware(
 app.include_router(ask_router)
 
 # ---------- Serve Frontend (React Build) ----------
-frontend_path = os.path.join(os.path.dirname(__file__), "frontend", "dist")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIST = os.path.join(BASE_DIR, "Frontend", "dist")
 
-if os.path.exists(frontend_path):
-    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+# Serve frontend if build exists
+if os.path.exists(FRONTEND_DIST):
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
 
     @app.get("/")
     async def serve_index():
-        return FileResponse(os.path.join(frontend_path, "index.html"))
+        return FileResponse(os.path.join(FRONTEND_DIST, "index.html"))
 
 
 # ---------- Load dataset on startup ----------
 @app.on_event("startup")
 async def startup_event():
     await load_messages()
+
 
