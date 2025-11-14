@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 import os
 
 # ---------- Initialize FastAPI ----------
-app = FastAPI(title="Aurora Q&A (Mini-RAG + FLAN-T5-Large)")
+app = FastAPI(title="Aurora Q&A (Mini-RAG)")
 
 # ---------- Enable CORS ----------
 app.add_middleware(
@@ -36,3 +36,4 @@ if os.path.exists(frontend_path):
 @app.on_event("startup")
 async def startup_event():
     await load_messages()
+
