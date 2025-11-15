@@ -32,7 +32,7 @@ Anomalies or Inconsistencies in the member data for feeding the LLM:
 7. Dataset not ordered chronologically
 8. Large variation in message length.
 
-**The screen recording contains:
+**The screen recording contains(DEMO.MP4):
 1. Asking Two Valid Queries (Answers Exist in Context)
 I begin by asking two different questions whose answers are clearly present in the Aurora messages dataset.
 The system retrieves the correct messages through the FAISS semantic index and generates grounded, accurate responses using the FLAN-T5 model.
