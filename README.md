@@ -46,3 +46,4 @@ This step verifies that the model answers only from retrieved context and does n
 3. Asking a Harmful or Unsafe Query (Guardrail Test)
 Finally, I test the toxicity guardrail by entering a harmful or unsafe question.
 The system blocks the request and returns a safe message, proving that the toxicity filter is active and working correctly.
+APP_LINK:auroraai-production.up.railway.app
